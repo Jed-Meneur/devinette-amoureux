@@ -9,6 +9,9 @@ Route::get('/', function () {
 
 Route::post('/submit', function (Request $request) {
     Confession::create([
+        'name'=>  $request->name,
+        'sexe'=>  $request->sexe,
+        'age'=>  $request->age,
         'q1' => $request->q1,
         'q2' => $request->q2,
         'q3' => $request->q3,

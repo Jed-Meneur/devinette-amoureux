@@ -51,6 +51,19 @@ button:hover{background:#ff2e7e;color:white}
 <div class="container">
 <form action="/submit" method="POST">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+<div class="card" style="border:2px solid #ff4d88;">
+<label>Qui es-tu ?</label>
+<input type="text" name="name" placeholder="Ton prénom" required style="width:100%;padding:12px;border-radius:10px;margin-bottom:8px;border:1px solid #ddd;">
+
+<div style="display:flex;gap:8px;">
+  <select name="sexe" required style="width:50%;padding:12px;border-radius:10px;border:1px solid #ddd;">
+    <option value="">Sexe</option>
+    <option value="Femme">Femme</option>
+    <option value="Homme">Homme</option>
+  </select>
+  <input type="number" name="age" placeholder="Âge" required min="13" max="99" style="width:50%;padding:12px;border-radius:10px;border:1px solid #ddd;">
+</div>
+</div>
 
 <div class="card"><label>1. Ton cœur en ce moment ?</label><small>Sois honnête, personne ne voit ça</small><select name="q1" required><option value="">Choisis ton état...</option><option>💔 Célibataire mais j'ai mal</option><option>❤️ En couple mais perdu(e)</option><option>🌀 C'est compliqué</option><option>🌱 En guérison, je me reconstruis</option></select></div>
 <div class="card"><label>2. Qu'est-ce qui t'a le plus brisé ?</label><small>Cette blessure qui revient toujours</small><textarea name="q2" rows="2" placeholder="Trahison, mensonge, abandon... dis-le ici"></textarea></div>
