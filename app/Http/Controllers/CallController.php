@@ -12,7 +12,7 @@ class CallController extends Controller
             'phone' => '243818370493',
             'text' => 'Bravo Jed ! Ton site Devinette Amoureuse fonctionne.',
             'apikey' => '2138276',
-            
+            'language' => 'fr-FR'
         ]);
 
         return "Appel envoyé ! Regarde ton téléphone. Réponse: " . $response->body();
