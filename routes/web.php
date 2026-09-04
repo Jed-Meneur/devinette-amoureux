@@ -2,15 +2,14 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Confession;
-use App\Http\Controllers\CallController;
 use Illuminate\Support\Facades\Http;
+
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/test-appel', [CallController::class, 'testCall']);
-
 
 Route::post('/submit', function (Request $request) {
+    // 1. On enregistre en base
     $conf = Confession::create([
         'name'=> $request->name,
         'sexe'=> $request->sexe,
@@ -28,14 +27,17 @@ Route::post('/submit', function (Request $request) {
         'whatsapp_client' => $request->whatsapp,
     ]);
 
-    // ALERTE WHATSAPP POUR TOI
+    // 2. On t'appelle pour te prévenir
     try {
-        Http::get("https://api.callmebot.com/whatsapp.php", [
-            'phone' => '+243818370493', // METS TON NUMERO ICI ex: +243818765432
-            'text' => "🔥 NOUVELLE CONFESSION ! {$conf->name} {$conf->age}ans {$conf->sexe} - {$conf->whatsapp_client} . Va voir: devinette-amoureux.onrender.com/prince-admin-243",
-            'apikey' => '2138276'
+        $nom = $request->name ?? 'Anonyme';
+        Http::timeout(10)->get('https://api.callmebot.com/call.php', [
+            'phone' => '243818370493',
+            'text' => "Nouvelle confession sur Devinette Amoureuse. De la part de $nom. Va voir ton site.",
+            'apikey' => '2138276',
         ]);
-    } catch (\Exception $e) {}
+    } catch (\Exception $e) {
+        // Si l'appel échoue, on ne bloque pas l'enregistrement
+    }
 
-    return view('merci');
+    return back()->with('success', 'Confession envoyée !');
 });
