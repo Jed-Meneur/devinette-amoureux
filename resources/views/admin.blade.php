@@ -22,7 +22,10 @@ a.btn{display:inline-block;margin-top:12px;background:#25D366;color:white;paddin
 @foreach($confessions as $c)
 <div class="box">
 <div class="head">
-<b>📱 {{ $c->whatsapp_client }}</b>
+<div>
+<b style="font-size:16px">{{ $c->prenom ?? $c->nom ?? $c->name ?? 'Anonyme' }}</b><br>
+<small style="color:#ff2e7e">{{ $c->age ?? '??' }} ans • {{ $c->sexe ?? $c->sex ?? $c->genre ?? '??' }} • {{ $c->whatsapp_client }}</small>
+</div>
 <span style="font-size:12px;color:#666">{{ $c->created_at }}</span>
 </div>
 
