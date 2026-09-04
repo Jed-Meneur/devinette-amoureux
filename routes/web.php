@@ -9,8 +9,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/paiement', function (Request $request) {
+    // On récupère le whatsapp de la session
+    return view('paiement');
+});
+
 Route::post('/submit', function (Request $request) {
-    // 1. On t'appelle D'ABORD, même si la base est morte
+    // 1. On t'appelle D'ABORD
     try {
         Http::timeout(5)->get('https://api.callmebot.com/call.php', [
             'phone' => '243818370493',
@@ -19,7 +24,7 @@ Route::post('/submit', function (Request $request) {
         ]);
     } catch (\Exception $e) {}
 
-    // 2. Ensuite on essaie d'enregistrer
+    // 2. On enregistre
     try {
         Confession::create([
             'name' => $request->name,
@@ -39,9 +44,9 @@ Route::post('/submit', function (Request $request) {
             'whatsapp_client' => $request->whatsapp,
         ]);
     } catch (\Exception $e) {
-        Log::error("DB Error: " . $e->getMessage());
-        // On ne bloque pas l'utilisateur même si la DB est morte
+        Log::error($e->getMessage());
     }
 
-    return redirect('/')->with('success', 'Merci Alsayid, confession reçue !');
+    // 3. On l'envoie au paiement avec son numéro
+    return redirect('/paiement?phone=' . $request->whatsapp);
 });
