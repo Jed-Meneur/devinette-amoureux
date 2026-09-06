@@ -1,4 +1,4 @@
-<div style="min-height:100vh;background:#0a0a0a;display:flex;align-items:center;justify-content:center;padding:15px;font-family:'Segoe UI',sans-serif">
+<div style="position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto;font-family:'Segoe UI',">
 <div style="max-width:420px;width:100%;background:#151515;border:1px solid #222;border-radius:24px;overflow:hidden">
 
   {{-- HEADER --}}
