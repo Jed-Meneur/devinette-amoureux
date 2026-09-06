@@ -2,12 +2,23 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Le Prince de l'Amour 👑 - Confession Intime</title>
+
+<!-- WHATSAPP / FACEBOOK IMAGE -->
+<meta property="og:title" content="Le Prince de l'Amour 👑 - Devinette Amoureuse">
+<meta property="og:description" content="Ce n'est pas un quiz. C'est un miroir. En 10 questions, je te dis pourquoi ton cœur souffre.">
+<meta property="og:image" content="https://devinette-amoureux-seven.vercel.app/og-image.jpg">
+<meta property="og:url" content="https://devinette-amoureux-seven.vercel.app">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://devinette-amoureux-seven.vercel.app/og-image.jpg">
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#080808;color:white;font-family:'Inter',sans-serif;overflow-x:hidden}
+html,body{width:100%;min-height:100dvh;background:#080808;}
+body{color:white;font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-text-size-adjust:100%;}
 .hero{background: radial-gradient(circle at 50% 0%, #2a0a18 0%, #080808 70%);padding:50px 20px 30px;text-align:center}
 .hero h1{font-family:'Playfair Display';font-size:38px;line-height:1.1}
 .hero h1 span{background: linear-gradient(90deg,#ff2e7e,#ff8a5c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -22,17 +33,18 @@ body{background:#080808;color:white;font-family:'Inter',sans-serif;overflow-x:hi
 .card:focus-within{border-color:#ff2e7e;transform:scale(1.02)}
 .card label{font-weight:600;font-size:14px;color:#e0e0e0}
 .card small{display:block;color:#777;font-size:11px;margin-top:4px;margin-bottom:10px}
-input,select,textarea{width:100%;background:#111;border:1px solid #222;color:white;padding:14px;border-radius:12px;margin-top:8px;font-size:14px}
+input,select,textarea{width:100%;background:#111;border:1px solid #222;color:white;padding:14px;border-radius:12px;margin-top:8px;font-size:16px;outline:none;-webkit-appearance:none}
 textarea::placeholder,input::placeholder{color:#555}
 .grand{background: linear-gradient(135deg,#ff0f7b 0%,#f89b29 100%);padding:2px;border-radius:26px;margin-top:10px}
 .grand-inner{background:#111;border-radius:24px;padding:22px}
 .grand label{color:white}
-.grand textarea,.grand input{background:white;color:black;border:none}
+.grand textarea,.grand input{background:white;color:black;border:none;font-size:16px}
 .grand small{color:rgba(255,255,255,0.8)}
 button{width:100%;margin-top:20px;background:white;color:black;font-weight:800;padding:18px;border-radius:100px;border:none;font-size:16px;letter-spacing:0.5px;cursor:pointer;box-shadow:0 10px 30px rgba(255,47,126,0.3)}
 button:hover{background:#ff2e7e;color:white}
-.secure{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:15px;color:#555;font-size:11px}
-.testis{margin-top:30px;display:flex;gap:10px;overflow:auto}
+.secure{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:15px;color:#555;font-size:11px;text-align:center;padding:0 10px}
+.testis{margin-top:30px;display:flex;gap:10px;overflow:auto;scrollbar-width:none}
+.testis::-webkit-scrollbar{display:none}
 .testi{min-width:200px;background:#151515;padding:12px;border-radius:16px;font-size:12px;color:#999;border:1px solid #222}
 </style>
 </head>
@@ -53,15 +65,14 @@ button:hover{background:#ff2e7e;color:white}
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 <div class="card" style="border:2px solid #ff4d88;">
 <label>Qui es-tu ?</label>
-<input type="text" name="name" placeholder="Ton prénom" required style="width:100%;padding:12px;border-radius:10px;margin-bottom:8px;border:1px solid #ddd;">
-
-<div style="display:flex;gap:8px;">
-  <select name="sexe" required style="width:50%;padding:12px;border-radius:10px;border:1px solid #ddd;">
+<input type="text" name="name" placeholder="Ton prénom" required>
+<div style="display:flex;gap:8px;margin-top:8px;">
+  <select name="sexe" required style="width:50%;">
     <option value="">Sexe</option>
     <option value="Femme">Femme</option>
     <option value="Homme">Homme</option>
   </select>
-  <input type="number" name="age" placeholder="Âge" required min="13" max="99" style="width:50%;padding:12px;border-radius:10px;border:1px solid #ddd;">
+  <input type="number" name="age" placeholder="Âge" required min="13" max="99" style="width:50%;">
 </div>
 </div>
 
@@ -85,7 +96,6 @@ button:hover{background:#ff2e7e;color:white}
 
 <button type="submit">CONFIER MON CŒUR AU PRINCE 👑</button>
 <div class="secure">🔒 Chiffré • Anonyme • Supprimé après lecture • Réponse humaine, pas robot</div>
-
 </form>
 
 <div class="testis">
