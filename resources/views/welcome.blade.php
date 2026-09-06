@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Le Prince de l'Amour 👑 - Confession Intime</title>
 
-<!-- WHATSAPP / FACEBOOK IMAGE -->
+<!-- OG - DYNAMIQUE POUR RENDER & VERCEL -->
 <meta property="og:title" content="Le Prince de l'Amour 👑 - Devinette Amoureuse">
-<meta property="og:description" content="Ce n'est pas un quiz. C'est un miroir. En 10 questions, je te dis pourquoi ton cœur souffre.">
-<meta property="og:image" content="https://devinette-amoureux-seven.vercel.app/og-image.jpg">
-<meta property="og:url" content="https://devinette-amoureux-seven.vercel.app">
+<meta property="og:description" content="Ce n'est pas un quiz. C'est un miroir. En 10 questions, je te dis pourquoi ton cœur souffre et comment le guérir.">
+<meta property="og:image" content="{{ url('/og-image.jpg') }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:url" content="{{ url('/') }}">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://devinette-amoureux-seven.vercel.app/og-image.jpg">
+<meta name="twitter:title" content="Le Prince de l'Amour 👑">
+<meta name="twitter:description" content="Découvre ce qu'il / elle pense vraiment de toi - Test en 2 min">
+<meta name="twitter:image" content="{{ url('/og-image.jpg') }}">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap');
