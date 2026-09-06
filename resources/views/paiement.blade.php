@@ -1,6 +1,6 @@
-<div style="position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto;font-family:'Segoe UI',">
-<div style="max-width:420px;width:100%;background:#151515;border:1px solid #222;border-radius:24px;overflow:hidden">
-
+<div style="min-height:100dvh;background:#0a0a0a;display:flex;justify-content:center;align-items:flex-start;padding:24px 16px 40px 16px;font-family:'Segoe UI',">
+<div style="max-width:390px;width:100%;background:#151515;border:1px solid #222;border-radius:24px;overflow:hidden;margin:0 auto">
+  
   {{-- HEADER --}}
   <div style="background:linear-gradient(135deg,#ff2e7e 0%,#ff6a00 100%);padding:22px;text-align:center;color:white">
     <div style="background:rgba(255,255,255,0.2);width:50px;height:50px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:24px">🔒</div>
