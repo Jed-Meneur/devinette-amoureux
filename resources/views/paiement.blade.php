@@ -36,7 +36,7 @@
         <span style="font-size:13px;line-height:1.4">Envoie <b style="color:#ff2e7e">5.000 FC</b> sur un des numéros officiels ci-dessous</span>
       </div>
       <div style="background:#111;padding:12px;border-radius:10px;margin-left:38px;margin-bottom:14px;line-height:1.9;font-size:14px">
-        <div style="display:flex;justify-content:space-between"><span>🔴 Airtel Money</span><b onclick="navigator.clipboard.writeText('0979675247')" style="cursor:pointer;color:#ff2e7e">+243 979 675 246 📋</b></div>
+        <div style="display:flex;justify-content:space-between"><span>🔴 Airtel Money</span><b onclick="navigator.clipboard.writeText('0979675247')" style="cursor:pointer;color:#ff2e7e">+243 979 675 247 📋</b></div>
         <div style="display:flex;justify-content:space-between"><span>🔵 M-Pesa</span><b onclick="navigator.clipboard.writeText('0818370493')" style="cursor:pointer;color:#ff2e7e">+243 818 370 493 📋</b></div>
         <div style="font-size:11px;color:#666;margin-top:6px">Nom: Jed Makambo • Clique sur le numéro pour copier</div>
       </div>
