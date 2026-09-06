@@ -68,3 +68,12 @@ Route::post('/verifier-paiement', function(Request $request){
 
     return redirect('/attente?code='.$code);
 });
+Route::get('/admin', function(Request $request){
+    // sécurité simple
+    if($request->get('key') !== 'jed2026') abort(403);
+
+    $confessions = DB::table('confessions')->latest()->get(); 
+    $paiements = DB::table('paiements')->latest()->get(); 
+
+    return view('admin', compact('confessions','paiements'));
+});

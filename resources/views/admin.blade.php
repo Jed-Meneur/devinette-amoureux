@@ -13,35 +13,60 @@ h1{font-size:24px;margin-bottom:20px}
 .q{margin:10px 0;padding:10px;background:#1f1f1f;border-radius:10px;font-size:13px}
 .q span{color:#666;font-size:11px;display:block;margin-bottom:3px;text-transform:uppercase}
 .big{border:2px solid #ff2e7e;background:#221118}
-a.btn{display:inline-block;margin-top:12px;background:#25D366;color:white;padding:12px 20px;border-radius:30px;text-decoration:none;font-weight:bold;font-size:13px}
+.btn{display:inline-block;margin-top:12px;background:#25D366;color:white;padding:12px 20px;border-radius:30px;text-decoration:none;font-weight:bold}
+.valid{background:#25D366}
+.del{background:#ff3d3d;margin-left:8px}
+.badge{padding:4px 8px;border-radius:20px;font-size:10px}
+.en-attente{background:orange;color:black}
+.valide{background:#25D366}
 </style>
 </head>
 <body>
+
+{{-- PAIEMENTS 5000FC --}}
+<h1 style="color:#25D366">💰 Paiements - {{ $paiements->count() }} transactions</h1>
+
+@forelse($paiements as $p)
+<div class="box big" style="border-color:#25D366">
+    <div class="head">
+        <div>
+            <b style="color:#25D366;font-size:18px">{{ $p->code_transaction ?? $p->code ?? 'MP-CODE' }} 📋</b><br>
+            <small style="color:#888">{{ $p->created_at }} - <span class="badge {{ $p->statut=='valide' ? 'valide' : 'en-attente' }}">{{ $p->statut ?? 'en attente' }}</span></small>
+        </div>
+        <div>
+            @if(($p->statut ?? '') != 'valide')
+            <a class="btn valid" href="/admin-valider/{{ $p->id }}?key=jed2026">✅ Valider</a>
+            @endif
+            <a class="btn del" href="/admin-supprimer/{{ $p->id }}?key=jed2026" onclick="return confirm('Supprimer ce paiement?')">🗑️</a>
+        </div>
+    </div>
+</div>
+@empty
+<div class="box"><small>Aucun paiement pour l'instant. Teste avec MP12345 sur /paiement</small></div>
+@endforelse
+
+<hr style="margin:40px 0;opacity:0.2">
+
+{{-- CONFESSIONS --}}
 <h1>👑 Admin Secret - {{ $confessions->count() }} confessions</h1>
 
 @foreach($confessions as $c)
 <div class="box">
-<div class="head">
-<div>
-<b style="font-size:16px">{{ $c->prenom ?? $c->nom ?? $c->name ?? 'Anonyme' }}</b><br>
-<small style="color:#ff2e7e">{{ $c->age ?? '??' }} ans • {{ $c->sexe ?? $c->sex ?? $c->genre ?? '??' }} • {{ $c->whatsapp_client }}</small>
-</div>
-<span style="font-size:12px;color:#666">{{ $c->created_at }}</span>
-</div>
-
-<div class="q"><span>1. Coeur actuel</span>{{ $c->q1 }}</div>
-<div class="q"><span>2. Brisé par quoi</span>{{ $c->q2 }}</div>
-<div class="q"><span>3. Peur</span>{{ $c->q3 }}</div>
-<div class="q"><span>4. Idéal</span>{{ $c->q4 }}</div>
-<div class="q"><span>5. Schéma toxique</span>{{ $c->q5 }}</div>
-<div class="q"><span>6. Réaction quand blessé</span>{{ $c->q6 }}</div>
-<div class="q"><span>7. Cherche quoi</span>{{ $c->q7 }}</div>
-<div class="q"><span>8. Fantasme secret</span>{{ $c->q8 }}</div>
-<div class="q"><span>9. Objectif</span>{{ $c->q9 }}</div>
-<div class="q big"><span>10. MESSAGE DU COEUR ❤️</span>{{ $c->q10 }}</div>
-
-<a class="btn" href="https://wa.me/{{ $c->whatsapp_client }}?text=Salut%2C%20c'est%20le%20Prince%20de%20l'amour%20👑%20J'ai%20lu%20ta%20confession%20avec%20attention..." target="_blank">→ Répondre sur WhatsApp</a>
+    <div class="head">
+        <div>
+            <b style="font-size:16px">{{ $c->prenom ?? $c->nom ?? $c->name ?? 'Anonyme' }}</b><br>
+            <small style="color:#ff2e7e">{{ $c->age ?? '??' }} ans • {{ $c->sexe ?? $c->sex ?? $c->genre ?? '??' }} • {{ $c->whatsapp_client ?? '' }}</small>
+        </div>
+        <span style="font-size:12px;color:#666">{{ $c->created_at }}</span>
+    </div>
+    @if(isset($c->message) || isset($c->confession) || isset($c->question))
+    <div class="q">
+        <span>Message</span>
+        {{ $c->message ?? $c->confession ?? $c->question }}
+    </div>
+    @endif
 </div>
 @endforeach
+
 </body>
 </html>
