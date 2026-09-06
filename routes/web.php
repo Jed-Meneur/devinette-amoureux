@@ -121,11 +121,3 @@ Route::get('/admin-supprimer/{id}', function(Request $request, $id){
 Route::get('/admin', function(Request $request){
     return redirect('/admin-5000?key='.$request->get('key'));
 });
-Route::get('/run-migrate-jed2026', function(){
-    try {
-        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
-        return "<h1>OK MIGRATION FAITE</h1><pre>".\Illuminate\Support\Facades\Artisan::output()."</pre>";
-    } catch (\Exception $e) {
-        return "<h1>Erreur migration:</h1><pre>".$e->getMessage()."</pre>";
-    }
-});
