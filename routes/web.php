@@ -50,3 +50,21 @@ Route::post('/submit', function (Request $request) {
     // 3. On l'envoie au paiement avec son numéro
     return redirect('/paiement?phone=' . $request->whatsapp);
 });
+// PAGE ATTENTE APRES PAIEMENT 5000FC
+Route::get('/attente', function(Request $request){
+    return view('attente', ['code' => $request->query('code')]);
+});
+
+Route::post('/verifier-paiement', function(Request $request){
+    $code = $request->input('code_transaction');
+    
+    try {
+        Http::timeout(5)->get('https://api.callmebot.com/whatsapp.php', [
+            'phone' => '243818370493',
+            'text' => "💰 PAIEMENT 5000FC REÇU ! Code: $code - Vérifie vite sur ton tel",
+            'apikey' => '2138276',
+        ]);
+    } catch (\Exception $e) {}
+
+    return redirect('/attente?code='.$code);
+});
