@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use App\Models\Confession;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,29 +53,23 @@ Route::post('/submit', function (Request $request) {
     return redirect('/paiement?phone=' . $request->whatsapp);
 });
 // PAGE ATTENTE APRES PAIEMENT 5000FC
-Route::get('/attente', function(Request $request){
-    return view('attente', ['code' => $request->query('code')]);
-});
 
-Route::post('/verifier-paiement', function(Request $request){
-    $code = $request->input('code_transaction');
-    
-    try {
-        Http::timeout(5)->get('https://api.callmebot.com/whatsapp.php', [
-            'phone' => '243818370493',
-            'text' => "💰 PAIEMENT 5000FC REÇU ! Code: $code - Vérifie vite sur ton tel",
-            'apikey' => '2138276',
-        ]);
-    } catch (\Exception $e) {}
 
-    return redirect('/attente?code='.$code);
-});
-Route::get('/admin', function(Request $request){
-    // sécurité simple
+Route::get('/admin-5000', function(Request $request){
     if($request->get('key') !== 'jed2026') abort(403);
+    $paiements = DB::table('paiements')->orderBy('id','desc')->get();
+    $confessions = DB::table('confessions')->orderBy('id','desc')->get();
+    return view('admin', compact('paiements','confessions'));
+});
 
-    $confessions = DB::table('confessions')->latest()->get(); 
-    $paiements = DB::table('paiements')->latest()->get(); 
+Route::get('/admin-valider/{id}', function(Request $request, $id){
+    if($request->get('key') !== 'jed2026') abort(403);
+    DB::table('paiements')->where('id',$id)->update(['statut'=>'valide']);
+    return redirect('/admin-5000?key=jed2026');
+});
 
-    return view('admin', compact('confessions','paiements'));
+Route::get('/admin-supprimer/{id}', function(Request $request, $id){
+    if($request->get('key') !== 'jed2026') abort(403);
+    DB::table('paiements')->where('id',$id)->delete();
+    return redirect('/admin-5000?key=jed2026');
 });
