@@ -38,7 +38,7 @@
       <div style="background:#111;padding:12px;border-radius:10px;margin-left:38px;margin-bottom:14px;line-height:1.9;font-size:14px">
         <div style="display:flex;justify-content:space-between"><span>🔴 Airtel Money</span><b onclick="navigator.clipboard.writeText('0979675247')" style="cursor:pointer;color:#ff2e7e">+243 979 675 246 📋</b></div>
         <div style="display:flex;justify-content:space-between"><span>🔵 M-Pesa</span><b onclick="navigator.clipboard.writeText('0818370493')" style="cursor:pointer;color:#ff2e7e">+243 818 370 493 📋</b></div>
-        <div style="font-size:11px;color:#666;margin-top:6px">Nom: Jed Mak • Clique sur le numéro pour copier</div>
+        <div style="font-size:11px;color:#666;margin-top:6px">Nom: Jed Makambo • Clique sur le numéro pour copier</div>
       </div>
       <div style="display:flex;gap:12px">
         <span style="background:#222;min-width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px">2</span>
