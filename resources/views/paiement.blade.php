@@ -50,8 +50,8 @@
             <div style="flex:1;">
                 <div style="font-size:13px;font-weight:600;">Envoie <b style="color:#f97316;">5.000 FC</b> sur un des numéros officiels ci-dessous</div>
                 <div style="background:#151515;border-radius:10px;padding:10px;margin-top:10px;">
-                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:13px;">🔴 Airtel Money</span><span style="color:#f97316;font-weight:700;font-size:13px;">+243 999 000 000</span></div>
-                    <div style="display:flex;justify-content:space-between;"><span style="font-size:13px;">🔵 M-Pesa</span><span style="color:#3b82f6;font-weight:700;font-size:13px;">+243 999 000 000</span></div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:13px;">🔴 Airtel Money</span><span style="color:#f97316;font-weight:700;font-size:13px;">+243 979675247</span></div>
+                    <div style="display:flex;justify-content:space-between;"><span style="font-size:13px;">🔵 M-Pesa</span><span style="color:#3b82f6;font-weight:700;font-size:13px;">+243 818370493</span></div>
                     <div style="color:#666;font-size:10px;text-align:center;margin-top:8px;">Nom: TON NOM - Clique pour copier</div>
                 </div>
             </div>
